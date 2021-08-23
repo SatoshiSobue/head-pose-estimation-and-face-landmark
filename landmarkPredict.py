@@ -151,7 +151,7 @@ def getFaceImage(image,bboxs,left,right,top,bottom,height,width):
     faces = np.zeros((num,channels,height,width))
     for i in range (0,num):
         faces[i] = getTestPart(bboxs[i],left,right,top,bottom,image,height,width)/255.0
-        print faces[i].shape
+        print(faces[i].shape)
         # cv2.imshow('f',faces[i][0])
         #  cv2.waitKey(0)
     return faces
@@ -161,11 +161,11 @@ def detectFace(img):
     dets = detector(img,1)
     bboxs = np.zeros((len(dets),4))
     for i, d in enumerate(dets):
-        bboxs[i,0] = d.left();
-        bboxs[i,1] = d.right();
-        bboxs[i,2] = d.top();
-        bboxs[i,3] = d.bottom();
-    return bboxs;
+        bboxs[i,0] = d.left()
+        bboxs[i,1] = d.right()
+        bboxs[i,2] = d.top()
+        bboxs[i,3] = d.bottom()
+    return bboxs
 
 
 def predictImage(filename):
@@ -184,11 +184,11 @@ def predictImage(filename):
     mean = caffe.io.blobproto_to_array(a)[0]
 
     while line:
-        print index
+        print(index)
         line = line.strip()
         info = line.split(' ')
         imgPath = info[0]
-        print imgPath
+        print(imgPath)
         num = 1
         colorImage = cv2.imread(imgPath)
         bboxs = detectFace(colorImage)
